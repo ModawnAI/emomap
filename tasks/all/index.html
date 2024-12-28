@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>dayAll | webrain</title>
+	<meta charset="utf-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<link href="../../../assets/css/tasks.css" rel="stylesheet" type="text/css" />
+	
+
+	<script src="../../lib/jspsych-6.3.1/jspsych.js"></script>
+	<script src="../../lib/jspsych-6.3.1/plugins/jspsych-html-button-response.js"></script>
+	<script src="../../lib/jspsych-6.3.1/plugins/jspsych-html-keyboard-response.js"></script>
+	<script src="../../lib/jspsych-6.3.1/plugins/jspsych-image-keyboard-response.js"></script>
+	<script src="../../lib/jspsych-6.3.1/plugins/jspsych-audio-keyboard-response.js"></script>
+	<script src="../../lib/jspsych-6.3.1/plugins/jspsych-fullscreen.js"></script>
+	<script src="../../lib/jspsych-6.3.1/plugins/jspsych-call-function.js"></script>
+	<script src="../../lib/jspsych-6.3.1/newplugins/jspsych-unified-button-response.js"></script>
+	<script src="../../lib/jspsych-6.3.1/newplugins/jspsych-unified-instructions.js"></script>
+	<script src="../../lib/jspsych-6.3.1/newplugins/jspsych-unified-no-response.js"></script>
+	<script src="../../lib/jspsych-6.3.1/newplugins/jspsych-unified-survey.js"></script>
+	<script src="../../lib/jspsych-6.3.1/newplugins/jspsych-unified-audio-response.js"></script>
+	<script src="../../lib/jspsych-6.3.1/plugins/jspsych-canvas-button-response.js"></script>
+	<script src="../../lib/jspsych-6.3.1/plugins/jspsych-survey-multi-choice.js"></script>
+	<script src="../../lib/jspsych-6.3.1/plugins/jspsych-external-html.js"></script>
+	<script src="../../../assets/js/bowser.js"></script> <!-- a browser and operating system detector -->
+	<script src="../../../assets/js/jquery.min.js"></script>
+	<script src="../../../assets/js/chart.js"></script>
+</head>
+
+<body ontouchstart="">
+	<video id="video" muted autoplay>
+		<button id="unmuteButton"></button>
+		<script>
+			unmuteButton.addEventListener('click', function () {
+				video.muted = false;
+			});
+		</script>
+	</video>
+</body>
+<script src="../../module/jsFunctions.js"></script>
+<script src="../../module/jsEnvironment.js"></script>
+<script src="../../module/jsUXModules.js"></script>
+<script src="../../module/jsDatabase.js"></script>
+
+<script>
+	env.rootpath = '../../../assets/';
+	env.timeline_fullscreen_flag = false;
+	const uxm = new jsUXModules(env.rootpath);
+</script>
+<script src="../../module/jsTrialLibrary.js"></script>
+<script src="../../module/jsCogtask.js"></script>
+<script src="../../module/jsTrialtask.js"></script>
+<script src="../../module/jsTrial.js"></script>
+
+<script src="../../module/jsExperiment.js"></script>
+<script src="../../module/jsDotProbe.js"></script>
+<script src="../../module/jsFlanker.js"></script>
+<script src="../../module/jsNBack.js"></script>
+<script src="../../module/jsStop.js"></script>
+<script src="../../module/jsStroop.js"></script>
+<script src="../../module/jsEmoBias.js"></script>
+<script src="../../module/jsReport.js"></script>
+<script src="process.js"></script>
+</html>

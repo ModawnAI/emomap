@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MySeed</title>
+	<meta charset="utf-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<link href="../../../assets/css/tasks.css" rel="stylesheet" type="text/css" />
+
+	<script src="../../lib/jspsych-6.3.1/jspsych.js"></script>
+	<script src="../../lib/jspsych-6.3.1/plugins/jspsych-html-button-response.js"></script>
+	<script src="../../lib/jspsych-6.3.1/plugins/jspsych-html-keyboard-response.js"></script>
+	<script src="../../lib/jspsych-6.3.1/plugins/jspsych-image-keyboard-response.js"></script>
+	<script src="../../lib/jspsych-6.3.1/plugins/jspsych-audio-keyboard-response.js"></script>
+	<script src="../../lib/jspsych-6.3.1/plugins/jspsych-fullscreen.js"></script>
+	<script src="../../lib/jspsych-6.3.1/plugins/jspsych-call-function.js"></script>
+	<script src="../../lib/jspsych-6.3.1/newplugins/jspsych-unified-button-response.js"></script>
+	<script src="../../lib/jspsych-6.3.1/newplugins/jspsych-unified-instructions.js"></script>
+	<script src="../../lib/jspsych-6.3.1/newplugins/jspsych-unified-no-response.js"></script>
+	<script src="../../lib/jspsych-6.3.1/plugins/jspsych-canvas-button-response.js"></script>
+	<script src="../../../assets/js/bowser.js"></script> <!-- a browser and operating system detector -->
+	<script src="../../../assets/js/jquery.min.js"></script>
+
+	<script src="../../../assets/js/chart.js"></script>
+
+</head>
+<body data-type="stopsignal">
+
+</body>
+<script src="../../module/jsFunctions.js"></script>
+<script src="../../module/jsEnvironment.js"></script>
+<script src="../../module/jsUXModules.js"></script>
+<script src="../../module/jsDatabase.js"></script>
+<script>
+	env.rootpath = '../../../assets/';
+	env.timeline_fullscreen_flag = false;
+	const uxm = new jsUXModules(env.rootpath);
+	const db = new jsDatabase();
+</script>
+<script src="../../module/jsTrialLibrary.js"></script>
+<script src="../../module/jsTrial.js"></script>
+<script src="../../module/jsCogtask.js"></script>
+<script src="../../module/jsExperiment.js"></script>
+<script src="var/variables.js"></script>
+<script>
+	const trlib = new jsTrialLibrary();
+	const exp = new jsExperiment('EmoMapV1.0');
+</script>
+
+<script src="../../module/jsStop.js"></script>
+<script> //My script starts from here!!!
+	const localpath = './';
+	const task = new jsStop('stop', localpath);
+	task.create_task_trial();
+	task.set_trial_variables({stimulus_duration: 1000, trial_duration: 2000, stimulus_width: 300, stimulus_height: 334 });
+	task.set_task_variables({sequence_length: 8, instruction_keyword: '화난얼굴에는 멈추세요', level_info: '정서주의력탐험', });
+	// task.set_task_variables({ instruction_keyword: '화난얼굴에는 멈추세요', level_info: '정서주의력탐험', });
+	task.setup();
+	task.compile();
+	exp.add_task(task);
+	exp.run();
+	
+</script>
+
+</html>

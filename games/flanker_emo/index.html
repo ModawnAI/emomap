@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MySeed</title>
+	<meta charset="utf-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<link href="../../../assets/css/tasks.css" rel="stylesheet" type="text/css" />
+
+	<script src="../../lib/jspsych-6.3.1/jspsych.js"></script>
+	<script src="../../lib/jspsych-6.3.1/plugins/jspsych-html-button-response.js"></script>
+	<script src="../../lib/jspsych-6.3.1/plugins/jspsych-html-keyboard-response.js"></script>
+	<script src="../../lib/jspsych-6.3.1/plugins/jspsych-image-keyboard-response.js"></script>
+	<script src="../../lib/jspsych-6.3.1/plugins/jspsych-audio-keyboard-response.js"></script>
+	<script src="../../lib/jspsych-6.3.1/plugins/jspsych-fullscreen.js"></script>
+	<script src="../../lib/jspsych-6.3.1/plugins/jspsych-call-function.js"></script>
+	<script src="../../lib/jspsych-6.3.1/newplugins/jspsych-unified-button-response.js"></script>
+	<script src="../../lib/jspsych-6.3.1/newplugins/jspsych-unified-instructions.js"></script>
+	<script src="../../lib/jspsych-6.3.1/newplugins/jspsych-unified-no-response.js"></script>
+	<script src="../../lib/jspsych-6.3.1/plugins/jspsych-canvas-button-response.js"></script>
+	<script src="../../../assets/js/bowser.js"></script> <!-- a browser and operating system detector -->
+	<script src="../../../assets/js/jquery.min.js"></script>
+	<script src="../../../assets/js/chart.js"></script>
+</head>
+<body data-type="flanker">
+
+</body>
+<script src="../../module/jsFunctions.js"></script>
+<script src="../../module/jsEnvironment.js"></script>
+<script src="../../module/jsUXModules.js"></script>
+<script src="../../module/jsDatabase.js"></script>
+<script>
+	env.rootpath='../../../assets/';
+	env.timeline_fullscreen_flag=false;
+	const uxm=new jsUXModules(env.rootpath);
+	const db=new jsDatabase();
+</script>
+<script src="../../module/jsTrialLibrary.js"></script>
+<script src="../../module/jsTrial.js"></script>
+<script src="../../module/jsCogtask.js"></script>
+<script src="../../module/jsExperiment.js"></script>
+<script src="var/variables.js"></script>
+<script>
+	const trlib=new jsTrialLibrary();
+	const exp=new jsExperiment('EmoMapV1.0');
+</script>
+<script src="../../module/jsFlanker.js"></script>
+<script> //my script starts from here!!!
+	const localpath='./';
+	const task=new jsFlanker('flanker-emov1.0',localpath);
+	task.background_size = 'keepratio';
+	task.background_position = 'center center';
+	task.background_color = '#FFFFFF';
+	//task.background_linear = 'linear-gradient(#91b54b 14.5%, #a2e3df 14.5%, #83d1d0 91%, #91b54b 9%)';
+
+	const butt=[`${uxm.imagepath}button/sad_str.png`,`${uxm.imagepath}button/happy_str.png`];
+	task.create_task_trial();
+	task.set_trial_variables({stimulus_duration:500,trial_duration:1500,response_choices:butt,stimulus_height:90,stimulus_width:450,user_stim_style_flag:true});
+	//stimulus_height:60,stimulus_width:300,user_stim_style_flag:true,
+	task.set_task_variables({sequence_length:30,level_info:'얼굴표정찾기',});
+	task.setup();
+	task.compile();
+	exp.add_task(task);
+	exp.run();
+</script>
+</html>

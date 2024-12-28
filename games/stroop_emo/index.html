@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html data-type="stroop">
+<head>
+	<title>MySeed</title>
+	<meta charset="utf-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<link href="../../../assets/css/tasks.css" rel="stylesheet" type="text/css" />
+
+	<script src="../../lib/jspsych-6.3.1/jspsych.js"></script>
+	<script src="../../lib/jspsych-6.3.1/plugins/jspsych-html-button-response.js"></script>
+	<script src="../../lib/jspsych-6.3.1/plugins/jspsych-html-keyboard-response.js"></script>
+	<script src="../../lib/jspsych-6.3.1/plugins/jspsych-image-keyboard-response.js"></script>
+	<script src="../../lib/jspsych-6.3.1/plugins/jspsych-audio-keyboard-response.js"></script>
+	<script src="../../lib/jspsych-6.3.1/plugins/jspsych-fullscreen.js"></script>
+	<script src="../../lib/jspsych-6.3.1/plugins/jspsych-call-function.js"></script>
+	<script src="../../lib/jspsych-6.3.1/newplugins/jspsych-unified-button-response.js"></script>
+	<script src="../../lib/jspsych-6.3.1/newplugins/jspsych-unified-instructions.js"></script>
+	<script src="../../lib/jspsych-6.3.1/newplugins/jspsych-unified-no-response.js"></script>
+	<script src="../../lib/jspsych-6.3.1/plugins/jspsych-canvas-button-response.js"></script>
+	<script src="../../../assets/js/bowser.js"></script> <!-- a browser and operating system detector -->
+	<script src="../../../assets/js/jquery.min.js"></script>
+
+	<script src="../../../assets/js/chart.js"></script>
+
+</head>
+<body>
+
+</body>
+<script src="../../module/jsFunctions.js"></script>
+<script src="../../module/jsEnvironment.js"></script>
+<script src="../../module/jsUXModules.js"></script>
+<script src="../../module/jsDatabase.js"></script>
+<script>
+	env.rootpath='../../../assets/';
+	env.timeline_fullscreen_flag=false;
+	const uxm=new jsUXModules(env.rootpath);
+	const db=new jsDatabase();
+</script>
+<script src="../../module/jsTrialLibrary.js"></script>
+<script src="../../module/jsTrial.js"></script>
+<script src="../../module/jsCogtask.js"></script>
+<script src="../../module/jsExperiment.js"></script>
+<script src="var/variables.js"></script>
+<script>
+	const trlib=new jsTrialLibrary();
+	const exp=new jsExperiment('EmoMapV1.0');
+</script>
+
+<script src="../../module/jsStroop.js"></script>
+<script> //My script starts from here!!!
+	const localpath='./';
+	const task=new jsStroop('stroop',localpath);
+
+	task.background_size = 'keepratio';
+	task.background_position = 'center';
+	task.background_linear = 'linear-gradient(rgb(233, 233, 233) 59.5%, rgb(227, 181, 147) 40.5%)';
+
+	//const butt=[`${uxm.imagepath}button/congruent.png`,`${uxm.imagepath}button/incongruent.png`];
+    const faces=['angry','sad','neutral','happy'];
+	const texts=['angry','sad','neutral','happy'];
+	const rulestr=['text','face']; // 테이블 칼럼 이름으로 salient/unsalient 순임.
+    const butt=['./img/button_angry.png','./img/button_sad.png','./img/button_neutral.png','./img/button_happy.png']; //순서가 unsalient 와 같아야 함.
+	const randomorder=['angryangry_f1','angrysad_m1','angryneutral_f2','angryhappy_m2',
+	'sadangry_f1','sadsad_m1','sadneutral_f2','sadhappy_m2',
+	'neutralangry_f1','neutralsad_m1','neutralneutral_f2','neutralhappy_m2',
+	'happyangry_f1','happysad_m1','happyneutral_f2','happyhappy_m2'
+	];// salient x unsalient examples for random
+	task.create_task_trial();
+	task.set_trial_variables({stimulus_duration:1500,trial_duration:3000,stimulus_height:444,stimulus_width:400,user_stim_style_flag:true, response_choices:butt,unsalient:faces,salient:texts,rulestr:rulestr,random_conditions:randomorder});
+	task.set_task_variables({instruction_keyword:'얼굴표정을 찾아보세요',level_info:'정서주의력탐험',});
+	task.setup();
+	task.compile();
+	exp.add_task(task);
+	console.log(task)
+	exp.run();
+</script>
+</html>
